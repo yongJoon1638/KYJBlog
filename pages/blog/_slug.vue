@@ -26,7 +26,6 @@
       </ul>
     </nav>
     <nuxt-content :document="article" />
-    <author :author="article.author"></author>
   </article>
 </template>
 
