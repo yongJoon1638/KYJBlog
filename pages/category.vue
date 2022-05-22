@@ -7,18 +7,6 @@
         </v-col>
       </v-row>
     </v-container>
-    <h1>Blog Posts</h1>
-    <ul>
-      <li v-for="article of articles" :key="article.slug">
-        <nuxt-link :to="{ name: 'blog-slug', params: { slug: article.slug } }">
-          <img :src="article.img" />
-          <div>
-            <h2>{{ article.title }}</h2>
-            <p>{{ article.description }}</p>
-          </div>
-        </nuxt-link>
-      </li>
-    </ul>
   </div>
 </template>
 
