@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <HeadNav></HeadNav>
     <v-main>
       <v-container>
