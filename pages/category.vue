@@ -3,7 +3,7 @@
     <v-chip class="mr-3" v-for="(count, tagName) in contentTags" :key="index">
       <v-avatar
           left
-          class="grey darken-4"
+          class="grey"
         >
           {{ count }}
         </v-avatar>{{ tagName }} 
