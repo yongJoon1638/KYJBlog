@@ -3,17 +3,7 @@
     <HeadNav></HeadNav>
     <v-main class="grey lighten-3">
       <v-container>
-        <div class="row">
-          <div class="col col-2">
-            <div
-              class="v-sheet theme--light rounded-lg"
-              style="min-height: 268px"
-            ></div>
-          </div>
-          <div class="col">
-            <Nuxt />
-          </div>
-        </div>
+        <Nuxt />
       </v-container>
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
