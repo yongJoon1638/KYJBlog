@@ -14,22 +14,25 @@
 
 <template>
   <article>
-    <img :src="article.img" :alt="article.alt" />
+    <div>
+      {{ formatDate(article.updatedAt) }}
+    </div>
     <div>
       <h1>{{ article.title }}</h1>
       <small>{{ article.description }}</small>
     </div>
-    <div class="mb-5">
-      <small>{{ formatDate(article.updatedAt) }}</small>
-    </div>
-    <nav>
-      <ul>
-        <li v-for="link of article.toc" :key="link.id">
-          <nuxt-link :to="`#${link.id}`">{{ link.text }}</nuxt-link>
-        </li>
-      </ul>
-    </nav>
+    <img :src="article.img" :alt="article.alt" />
     <nuxt-content :document="article" />
+    
+    <v-navigation-drawer absolute permanent right>
+      <v-list v-for="link in article.toc" :key="link.id">
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>{{ link.text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </article>
 </template>
 
