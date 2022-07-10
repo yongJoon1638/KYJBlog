@@ -14,10 +14,14 @@
 
 <template>
   <article>
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.description }}</p>
     <img :src="article.img" :alt="article.alt" />
-    <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
+    <div>
+      <h1>{{ article.title }}</h1>
+      <small>{{ article.description }}</small>
+    </div>
+    <div class="mb-5">
+      <small>{{ formatDate(article.updatedAt) }}</small>
+    </div>
     <nav>
       <ul>
         <li v-for="link of article.toc" :key="link.id">

@@ -1,16 +1,20 @@
 <template>
   <div>
-    <v-chip class="mr-3" v-for="(count, tagName) in contentTags" :key="index">
-      <v-avatar
-          left
-          class="grey"
-        >
-          {{ count }}
-        </v-avatar>{{ tagName }} 
+    <v-chip
+      class="mr-3"
+      :color="tagName == filter.tag ? 'pink' : 'grey'"
+      text-color="white"
+      label
+      v-for="(count, tagName) in contentTags"
+      :key="index"
+      @click="filter.tag = filter.tag != tagName ? tagName : ''"
+    >
+      <v-icon left> mdi-label </v-icon>
+      {{ tagName }}
     </v-chip>
     <v-container grid-list-xs>
       <v-row dense>
-        <v-col v-for="(article, index) in articles" :key="index">
+        <v-col v-for="(article, index) in filteredArticles" :key="index">
           <PostCard :post="article"></PostCard>
         </v-col>
       </v-row>
@@ -20,6 +24,13 @@
 
 <script>
 export default {
+  data() {
+    return {
+      filter: {
+        tag: "",
+      },
+    };
+  },
   computed: {
     contentTags() {
       var tags = [];
@@ -39,6 +50,13 @@ export default {
       });
 
       return tagCnt;
+    },
+    filteredArticles() {
+      if (this.filter.tag != "") {
+        return this.articles.filter((a) => a.tags.includes(this.filter.tag));
+      }
+
+      return this.articles;
     },
   },
   async asyncData({ $content, params }) {
